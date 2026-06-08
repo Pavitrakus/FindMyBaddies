@@ -346,7 +346,7 @@ nav.scrolled {
 .chat-simulator {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  border-radius: 24px;
   height: 480px;
   width: 100%;
   max-width: 400px;
@@ -357,7 +357,14 @@ nav.scrolled {
 }
 
 .chat-header {
-  display: none !important;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
 }
 
 .chat-avatar {
@@ -443,7 +450,48 @@ nav.scrolled {
 }
 
 .chat-input-area {
-  display: none !important;
+  padding: 0.85rem 1rem;
+  display: flex;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.chat-input-mock {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  color: var(--text-gray);
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.chat-input-mock span.typing {
+  display: inline-block;
+  width: 1.5px;
+  height: 14px;
+  background: var(--text-gray);
+  margin-left: 1px;
+  animation: caret 0.7s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+.chat-send-mock {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 .chat-input-mock {
@@ -499,7 +547,7 @@ nav.scrolled {
 .landing-cta-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  border-radius: 20px;
   padding: 2rem 1.5rem;
   text-align: center;
   text-decoration: none;
@@ -644,7 +692,7 @@ nav.scrolled {
 .gpt-demo-uploader {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  border-radius: 24px;
   padding: 3rem 2rem;
   text-align: left;
   cursor: pointer;
@@ -759,7 +807,7 @@ nav.scrolled {
 .gpt-demo-results {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  border-radius: 24px;
   padding: 2rem;
   opacity: 0.3;
   transition: all 0.6s var(--ease-out-expo);
@@ -822,7 +870,7 @@ nav.scrolled {
 .insight-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  border-radius: 16px;
   padding: 1.25rem;
   font-size: 1.05rem;
   line-height: 1.6;
@@ -854,7 +902,7 @@ nav.scrolled {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 1rem;
-  border-radius: 2px;
+  border-radius: 14px;
   font-size: 1.05rem;
   cursor: pointer;
   transition: all 0.3s var(--ease-out-expo);
@@ -1086,7 +1134,7 @@ footer {
 }
 
 /* ============================================
-   UNIVERSAL TEXTURE BACKGROUND (BRUTALIST IMAGE)
+   UNIQUE TEXTURE BACKGROUNDS
    ============================================ */
 .chat-simulator::before, 
 .landing-cta-btn::before, 
@@ -1104,12 +1152,50 @@ footer {
   content: '';
   position: absolute;
   top: -10%; left: -10%; width: 120%; height: 120%;
-  background-image: url("IMG/6537d6b0b90b6.webp");
   background-size: cover;
   background-position: center;
   filter: blur(20px) brightness(0.2) saturate(1.2);
   z-index: -1;
   pointer-events: none;
-  clip-path: inset(8.333% round 2px);
+}
+
+/* Base shape mapping */
+.chat-simulator::before, .gpt-demo-uploader::before, .gpt-demo-results::before, .process-card::before, .waitlist-card::before, .dashboard-metrics::before {
+  clip-path: inset(8.333% round 24px);
+}
+.landing-cta-btn::before, .phone-screen::before { clip-path: inset(8.333% round 20px); }
+.insight-card::before, .screenshot-uploader::before { clip-path: inset(8.333% round 16px); }
+.reply-item::before, .form-input::before { clip-path: inset(8.333% round 14px); }
+.phone-container::before { clip-path: inset(8.333% round 28px); }
+
+/* Specific Image Assignments */
+.chat-simulator::before { background-image: url("IMG/young-couple-having-breakfast_23-2148079665.avif"); }
+.landing-cta-btn:nth-child(1)::before { background-image: url("IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp"); }
+.landing-cta-btn:nth-child(2)::before { background-image: url("IMG/best-ideas-dates-campus-body-1.jpg"); }
+.landing-cta-btn:nth-child(3)::before { background-image: url("IMG/young-couple-looking-each-other-affection-woman-holding-partner-s-neck-against-dark-background-intimate-studio-portrait-435182081.webp"); }
+.gpt-demo-uploader::before { background-image: url("IMG/6537d6b0b90b6.webp"); }
+.gpt-demo-results::before { background-image: url("IMG/image-2019-05-23-7-1.webp"); }
+.insight-card::before { background-image: url("IMG/best-ideas-dates-campus-body-1.jpg"); }
+.reply-item::before { background-image: url("IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp"); filter: blur(20px) brightness(0.15) saturate(1); }
+.process-card::before { background-image: url("IMG/image-2019-05-23-7-1.webp"); }
+.waitlist-card::before { background-image: url("IMG/6537d6b0b90b6.webp"); }
+.dashboard-metrics::before { background-image: url("IMG/young-couple-looking-each-other-affection-woman-holding-partner-s-neck-against-dark-background-intimate-studio-portrait-435182081.webp"); }
+.phone-container::before { background-image: url("IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp"); }
+.phone-screen::before { background-image: url("IMG/best-ideas-dates-campus-body-1.jpg"); }
+.screenshot-uploader::before { background-image: url("IMG/6537d6b0b90b6.webp"); }
+
+/* Mobile fixes for arrow layout */
+@media (max-width: 768px) {
+  .gpt-demo-uploader {
+    align-items: center;
+    text-align: center;
+  }
+  .marker-arrow {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-top: 20px;
+    transform: rotate(90deg) scale(0.8);
+  }
 }
 
