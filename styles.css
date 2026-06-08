@@ -357,12 +357,7 @@ nav.scrolled {
 }
 
 .chat-header {
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: none !important;
 }
 
 .chat-avatar {
@@ -448,11 +443,7 @@ nav.scrolled {
 }
 
 .chat-input-area {
-  padding: 0.85rem 1rem;
-  display: flex;
-  gap: 0.6rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: none !important;
 }
 
 .chat-input-mock {
@@ -1058,12 +1049,11 @@ footer {
     padding: 2rem 0 3rem;
   }
   .landing-cta-btn {
-    flex-direction: row;
-    text-align: left;
+    flex-direction: column;
+    text-align: center;
     gap: 1rem;
     padding: 1.5rem;
   }
-  .landing-cta-btn .cta-icon { margin-bottom: 0; }
 
   .baddie-gpt-demo-section { padding: 4rem 5%; }
   .gpt-demo-grid {
@@ -1091,7 +1081,7 @@ footer {
 @media (max-width: 576px) {
   .white-text { font-size: clamp(2rem, 8vw, 2.8rem); }
   .pink-text { font-size: clamp(2.8rem, 12vw, 4rem); }
-  .chat-simulator { height: 380px; border-radius: 20px; }
+  .chat-simulator { height: 380px; }
   .section-divider { height: 120px; }
 }
 
