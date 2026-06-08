@@ -344,7 +344,7 @@ nav.scrolled {
    CHAT SIMULATOR — polished glassmorphism
    ============================================ */
 .chat-simulator {
-  background: rgba(8, 8, 10, 0.85);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 2px;
   height: 480px;
@@ -506,7 +506,7 @@ nav.scrolled {
 }
 
 .landing-cta-btn {
-  background: rgba(8, 8, 10, 0.85);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 2px;
   padding: 2rem 1.5rem;
@@ -651,7 +651,7 @@ nav.scrolled {
 }
 
 .gpt-demo-uploader {
-  background: rgba(8, 8, 10, 0.85);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 2px;
   padding: 3rem 2rem;
@@ -766,7 +766,7 @@ nav.scrolled {
 
 /* GPT Results */
 .gpt-demo-results {
-  background: rgba(8, 8, 10, 0.85);
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 2px;
   padding: 2rem;
@@ -1094,3 +1094,32 @@ footer {
   .chat-simulator { height: 380px; border-radius: 20px; }
   .section-divider { height: 120px; }
 }
+
+/* ============================================
+   UNIVERSAL TEXTURE BACKGROUND (BRUTALIST IMAGE)
+   ============================================ */
+.chat-simulator::before, 
+.landing-cta-btn::before, 
+.gpt-demo-uploader::before, 
+.gpt-demo-results::before, 
+.insight-card::before, 
+.reply-item::before, 
+.process-card::before, 
+.waitlist-card::before, 
+.form-input::before, 
+.phone-container::before, 
+.phone-screen::before, 
+.screenshot-uploader::before, 
+.dashboard-metrics::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: -10%; width: 120%; height: 120%;
+  background-image: url("IMG/6537d6b0b90b6.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.2) saturate(1.2);
+  z-index: -1;
+  pointer-events: none;
+  clip-path: inset(8.333% round 2px);
+}
+
