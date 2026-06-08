@@ -31,71 +31,123 @@
     line-height: 1.75;
     max-width: 600px;
   }
-  .process-steps {
-    max-width: 900px;
+  /* Scrapbook Layout */
+  .scrapbook-steps {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 6% 6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    padding: 0 6% 8rem;
     position: relative;
     z-index: 10;
   }
-  .process-card {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2.5rem;
-    border-radius: 24px;
+  .scrapbook-step {
     display: flex;
-    gap: 2rem;
     align-items: center;
-    transition: all 0.3s var(--ease-out-expo);
+    gap: 4rem;
+    margin-bottom: 8rem;
     position: relative;
-    overflow: hidden;
   }
-  .process-card::before {
-    content: '';
+  .scrapbook-step:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .step-content {
+    flex: 1;
+    position: relative;
+  }
+  .step-num-badge {
     position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--pink);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .process-card:hover {
-    border-color: rgba(255, 62, 108, 0.15);
-    transform: translateY(-2px);
-  }
-  .process-card:hover::before { opacity: 1; }
-  .process-num {
+    top: -40px;
+    left: -30px;
     font-family: var(--font-pompiere);
-    font-size: 3.5rem;
+    font-size: 5rem;
     color: var(--pink);
-    opacity: 0.5;
-    flex-shrink: 0;
-    width: 60px;
-    text-align: center;
+    opacity: 0.2;
+    line-height: 1;
+    z-index: -1;
   }
-  .process-info h3 {
+  .step-content h3 {
     font-family: var(--font-pompiere);
-    font-size: 2rem;
-    margin-bottom: 0.35rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
   }
-  .process-info p {
-    font-size: 0.95rem;
+  .step-content p {
+    font-size: 1.05rem;
     color: var(--text-gray);
     line-height: 1.6;
   }
+  .step-deco {
+    flex: 1;
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sticker Elements */
+  .sticker-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .sticker-img:hover {
+    transform: translateY(-10px) rotate(5deg) scale(1.05);
+  }
+
+  /* Fanned Cards */
+  .fanned-cards-container {
+    position: relative;
+    width: 200px;
+    height: 280px;
+  }
+  .fanned-card {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 6px solid white;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .fanned-1 { transform: rotate(-12deg) translateX(-20px); z-index: 1; }
+  .fanned-2 { transform: rotate(4deg) translateY(-10px); z-index: 2; }
+  .fanned-3 { transform: rotate(18deg) translateX(20px); z-index: 3; }
+  .fanned-cards-container:hover .fanned-1 { transform: rotate(-20deg) translateX(-40px); }
+  .fanned-cards-container:hover .fanned-3 { transform: rotate(25deg) translateX(40px); }
+
+  /* Polaroid Card */
+  .polaroid-card {
+    background: white;
+    padding: 10px 10px 40px 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transform: rotate(6deg);
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  .polaroid-card img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+  }
+  .polaroid-card:hover {
+    transform: translateY(-10px) rotate(-2deg) scale(1.05);
+  }
+
   @media (max-width: 768px) {
-    .process-card {
+    .scrapbook-step, .scrapbook-step:nth-child(even) {
       flex-direction: column;
       text-align: center;
-      gap: 1rem;
-      padding: 2rem 1.5rem;
+      gap: 2rem;
+      margin-bottom: 5rem;
     }
-    .process-card::before { width: 100%; height: 3px; }
+    .step-num-badge { left: 50%; transform: translateX(-50%); top: -30px; }
+    .step-deco { height: 250px; }
+    .fanned-cards-container { width: 160px; height: 220px; }
+    .polaroid-card img { width: 200px; height: 200px; }
+    .sticker-img { width: 160px; height: 160px; }
     .page-hero { padding: 8rem 5% 4rem; }
-    .process-steps { padding: 0 5% 4rem; }
+    .scrapbook-steps { padding: 0 5% 4rem; }
   }
 </style>
 </head>
@@ -138,36 +190,58 @@
   </p>
 </section>
 
-<div class="process-steps">
-  <div class="process-card reveal">
-    <div class="process-num">01</div>
-    <div class="process-info">
+<div class="scrapbook-steps">
+  <!-- Step 01 -->
+  <div class="scrapbook-step reveal">
+    <div class="step-content">
+      <div class="step-num-badge">01</div>
       <h3>Deep Questionnaire</h3>
       <p>Answer personal matching surveys one question at a time. No rushing, no checkboxes. Just honest, deep responses that reveal who you actually are.</p>
     </div>
+    <div class="step-deco">
+      <img src="IMG/sticker_phone.png" alt="Phone Sticker" class="sticker-img">
+    </div>
   </div>
 
-  <div class="process-card reveal reveal-delay-1">
-    <div class="process-num">02</div>
-    <div class="process-info">
+  <!-- Step 02 -->
+  <div class="scrapbook-step reveal reveal-delay-1">
+    <div class="step-content">
+      <div class="step-num-badge">02</div>
       <h3>Context Upload</h3>
       <p>Share your ChatGPT history, conversation logs, screenshots, voice notes. Our multi-modal model builds the most accurate personality portrait possible.</p>
     </div>
-  </div>
-
-  <div class="process-card reveal reveal-delay-2">
-    <div class="process-num">03</div>
-    <div class="process-info">
-      <h3>The 7-Day Sweep</h3>
-      <p>Our AI agents crawl social structures, analyze public profiles, and compute compatibility models over a full week. Slow, exhaustive, and thorough.</p>
+    <div class="step-deco">
+      <div class="fanned-cards-container">
+        <img src="IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp" class="fanned-card fanned-1">
+        <img src="IMG/best-ideas-dates-campus-body-1.jpg" class="fanned-card fanned-2">
+        <img src="IMG/young-couple-having-breakfast_23-2148079665.avif" class="fanned-card fanned-3">
+      </div>
     </div>
   </div>
 
-  <div class="process-card reveal reveal-delay-3">
-    <div class="process-num">04</div>
-    <div class="process-info">
+  <!-- Step 03 -->
+  <div class="scrapbook-step reveal reveal-delay-2">
+    <div class="step-content">
+      <div class="step-num-badge">03</div>
+      <h3>The 7-Day Sweep</h3>
+      <p>Our AI agents crawl social structures, analyze public profiles, and compute compatibility models over a full week. Slow, exhaustive, and thorough.</p>
+    </div>
+    <div class="step-deco">
+      <img src="IMG/sticker_calendar.png" alt="Calendar Sticker" class="sticker-img" style="transform: scale(1.2);">
+    </div>
+  </div>
+
+  <!-- Step 04 -->
+  <div class="scrapbook-step reveal reveal-delay-3">
+    <div class="step-content">
+      <div class="step-num-badge">04</div>
       <h3>One Verified Match</h3>
       <p>You receive a single recommendation. Fully analyzed, identity-verified, and curated. Not fifty mediocre options. One real person worth meeting.</p>
+    </div>
+    <div class="step-deco">
+      <div class="polaroid-card">
+        <img src="IMG/young-couple-looking-each-other-affection-woman-holding-partner-s-neck-against-dark-background-intimate-studio-portrait-435182081.webp" alt="Match Polaroid">
+      </div>
     </div>
   </div>
 </div>
