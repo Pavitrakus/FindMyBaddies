@@ -343,17 +343,33 @@ nav.scrolled {
 /* ============================================
    CHAT SIMULATOR — polished glassmorphism
    ============================================ */
-.chat-simulator {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  height: 480px;
+/* Realistic Phone Mockup */
+.phone-mockup-wrapper {
+  position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   margin: 0 auto;
+}
+
+.mockup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+}
+
+.chat-simulator {
+  position: absolute;
+  top: 10.5%;
+  left: 6.5%;
+  width: 87%;
+  height: 79%;
+  background: #121214;
+  border-radius: 28px;
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
+  z-index: 10;
 }
 
 .chat-header {
@@ -361,10 +377,10 @@ nav.scrolled {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
+  background: rgba(20, 20, 25, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 20;
 }
 
 .chat-avatar {
@@ -400,13 +416,15 @@ nav.scrolled {
 
 .msg {
   max-width: 82%;
-  padding: 0.7rem 1.1rem;
-  border-radius: 18px;
-  font-size: 0.85rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 20px;
+  font-size: 0.92rem;
   line-height: 1.4;
   opacity: 0;
   transform: translateY(12px) scale(0.96);
   animation: popMsg 0.35s var(--ease-out-expo) forwards;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 @keyframes popMsg {
@@ -414,26 +432,20 @@ nav.scrolled {
 }
 
 .msg.bot {
-  background: transparent;
-  color: var(--text-white);
-  border-radius: 0;
+  background: rgba(40, 40, 45, 0.9);
+  color: #fff;
   align-self: flex-start;
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  padding: 0;
+  border-bottom-left-radius: 4px;
   margin-bottom: 0.75rem;
 }
 
 .msg.user {
-  background: transparent;
-  color: white;
-  border-radius: 0;
+  background: linear-gradient(135deg, #FF3E6C 0%, #FF6B8B 100%);
+  color: #fff;
   align-self: flex-end;
-  box-shadow: none;
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  padding: 0.2rem 0.6rem;
+  border-bottom-right-radius: 4px;
   margin-bottom: 0.75rem;
+  box-shadow: 0 8px 25px rgba(255, 62, 108, 0.25);
   position: relative;
   z-index: 1;
 }
@@ -453,10 +465,9 @@ nav.scrolled {
   padding: 0.85rem 1rem;
   display: flex;
   gap: 0.6rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
+  background: rgba(20, 20, 25, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 20;
 }
 
 .chat-input-mock {
@@ -1136,7 +1147,6 @@ footer {
 /* ============================================
    UNIQUE TEXTURE BACKGROUNDS
    ============================================ */
-.chat-simulator::before, 
 .landing-cta-btn::before, 
 .gpt-demo-uploader::before, 
 .gpt-demo-results::before, 
@@ -1160,7 +1170,7 @@ footer {
 }
 
 /* Base shape mapping */
-.chat-simulator::before, .gpt-demo-uploader::before, .gpt-demo-results::before, .process-card::before, .waitlist-card::before, .dashboard-metrics::before {
+.gpt-demo-uploader::before, .gpt-demo-results::before, .process-card::before, .waitlist-card::before, .dashboard-metrics::before {
   clip-path: inset(8.333% round 24px);
 }
 .landing-cta-btn::before, .phone-screen::before { clip-path: inset(8.333% round 20px); }
@@ -1169,7 +1179,6 @@ footer {
 .phone-container::before { clip-path: inset(8.333% round 28px); }
 
 /* Specific Image Assignments */
-.chat-simulator::before { background-image: url("IMG/young-couple-having-breakfast_23-2148079665.avif"); }
 .landing-cta-btn:nth-child(1)::before { background-image: url("IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp"); }
 .landing-cta-btn:nth-child(2)::before { background-image: url("IMG/best-ideas-dates-campus-body-1.jpg"); }
 .landing-cta-btn:nth-child(3)::before { background-image: url("IMG/young-couple-looking-each-other-affection-woman-holding-partner-s-neck-against-dark-background-intimate-studio-portrait-435182081.webp"); }
