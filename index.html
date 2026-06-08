@@ -91,32 +91,32 @@
          ============================ -->
     <div class="cta-button-row">
       <a href="waitlist.html" class="landing-cta-btn reveal">
-        <div class="cta-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-        </div>
+        <svg class="wobbly-circle" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M50,5 C75,8 95,25 95,50 C92,75 70,95 50,95 C25,92 5,70 5,50 C8,25 25,5 50,5" />
+        </svg>
         <div>
           <h3>Message on Telegram</h3>
           <p>Launch the matchmaker bot</p>
         </div>
       </a>
-
-      <a href="how-it-works.html" class="landing-cta-btn reveal reveal-delay-1">
-        <div class="cta-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="none"/></svg>
-        </div>
+      
+      <a href="how-it-works.html" class="landing-cta-btn reveal reveal-delay-2">
+        <svg class="wobbly-circle" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M50,5 C75,8 95,25 95,50 C92,75 70,95 50,95 C25,92 5,70 5,50 C8,25 25,5 50,5" />
+        </svg>
         <div>
           <h3>How It Works</h3>
           <p>Our slow matchmaking manifesto</p>
         </div>
       </a>
 
-      <a href="#baddie-gpt-demo" class="landing-cta-btn reveal reveal-delay-2">
-        <div class="cta-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
+      <a href="baddie-gpt.html" class="landing-cta-btn reveal reveal-delay-3">
+        <svg class="wobbly-circle" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M50,5 C75,8 95,25 95,50 C92,75 70,95 50,95 C25,92 5,70 5,50 C8,25 25,5 50,5" />
+        </svg>
         <div>
           <h3>Try BaddieGPT</h3>
-          <p>Analyze chats in real time</p>
+          <p>Analyze your chat history</p>
         </div>
       </a>
     </div>
@@ -141,11 +141,11 @@
 
       <div class="gpt-demo-grid">
         <div class="gpt-demo-uploader reveal reveal-delay-2" onclick="simulateGptAnalysis()">
-          <div class="uploader-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          </div>
-          <h3>Drop a Screenshot</h3>
-          <p>Or click to simulate a conversation upload</p>
+          <h3>Drop Chat Log</h3>
+          <p>Upload a screenshot, ChatGPT export, or raw text to extract behavioral patterns.</p>
+          <svg class="marker-arrow" viewBox="0 0 100 100">
+            <path d="M10,50 Q40,10 90,50 M80,30 L90,50 L70,60" />
+          </svg>
           <button class="simulate-btn">Simulate Upload</button>
 
           <div class="scanning-overlay" id="scanning-overlay">
@@ -161,7 +161,10 @@
               <span class="vibe-score" id="vibe-score">0%</span>
             </div>
             <div class="vibe-bar">
-              <div class="vibe-bar-fill" id="vibe-bar-fill"></div>
+                <svg class="vibe-brush" viewBox="0 0 400 24" preserveAspectRatio="none">
+                  <path d="M2,12 Q50,2 100,14 T200,10 T300,14 T398,12" stroke="var(--pink)" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.9" filter="url(#roughpaper)"/>
+                  <path d="M2,12 Q50,2 100,14 T200,10 T300,14 T398,12" stroke="var(--pink-soft)" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.5"/>
+                </svg>
             </div>
           </div>
 
@@ -414,7 +417,6 @@ function simulateGptAnalysis() {
     overlay.classList.remove('active');
     results.classList.add('active');
 
-    document.getElementById('vibe-bar-fill').style.width = '84%';
 
     let score = 0;
     const counter = setInterval(() => {
