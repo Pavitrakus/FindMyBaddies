@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BaddieGPT — FindMyBaddies</title>
+<meta name="description" content="Upload chat screenshots. Get real-time interest scoring, behavioral analysis, and reply suggestions in your own voice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pompiere&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .gpt-page {
+    padding: 10rem 6% 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .gpt-page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .gpt-page-header h1 {
+    font-family: var(--font-pompiere);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    color: var(--pink);
+    text-shadow: 0 0 60px var(--pink-glow);
+    margin-bottom: 1rem;
+  }
+  .gpt-page-header p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+  .phone-container {
+    background: var(--card-dark);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-screen {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 1.5rem;
+    gap: 0.8rem;
+    min-height: 420px;
+  }
+  .screenshot-uploader {
+    border: 1px dashed rgba(255, 62, 108, 0.2);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+  }
+  .screenshot-uploader:hover {
+    border-color: var(--pink);
+    background: rgba(255, 62, 108, 0.02);
+  }
+  .screenshot-uploader h3 {
+    font-family: var(--font-pompiere);
+    font-size: 1.8rem;
+  }
+  .screenshot-uploader p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .dashboard-metrics {
+    background: var(--card-dark);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  /* Feature List */
+  .feature-list {
+    padding: 5rem 6%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .feature-list-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .feature-list-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 62, 108, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .feature-list-icon svg {
+    width: 18px; height: 18px;
+    stroke: var(--pink);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .feature-list-item h3 {
+    font-family: var(--font-pompiere);
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+  .feature-list-item p {
+    font-size: 0.92rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+  @media (max-width: 992px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .gpt-page { padding: 8rem 5% 3rem; }
+    .feature-list { padding: 3rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain-overlay"></div>
+<div class="glow-blob glow-1"></div>
+<div class="glow-blob glow-2"></div>
+
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;overflow:hidden;">
+  <img src="IMG/008f7e023dbb33762e417e23c584ffbf4b-bony-date-bars-donna.rsocial.w1200.webp" style="width:110%;height:110%;object-fit:cover;filter:blur(12px) brightness(0.35) saturate(1.2);transform:scale(1.05);" alt="">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at center, rgba(6, 6, 8, 0.1) 0%, rgba(6, 6, 8, 0.75) 85%);"></div>
+</div>
+
+<nav id="main-nav" class="scrolled">
+  <a href="index.html" class="nav-logo">FindMyBaddies</a>
+  <div class="nav-links">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="baddie-gpt.html">Baddie GPT</a>
+    <a href="waitlist.html" class="nav-cta">Get Started</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+  <a href="how-it-works.html" onclick="toggleMobileMenu()">How It Works</a>
+  <a href="baddie-gpt.html" onclick="toggleMobileMenu()">Baddie GPT</a>
+  <a href="waitlist.html" onclick="toggleMobileMenu()">Get Started</a>
+</div>
+
+<section class="gpt-page">
+  <div class="gpt-page-header">
+    <div class="section-label reveal" style="justify-content:center;">Dashboard</div>
+    <h1 class="reveal">Baddie GPT</h1>
+    <p class="reveal reveal-delay-1">Upload your chat screenshots. Our AI reads both sides, scores interest, flags risks, and writes replies in your voice.</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="phone-container reveal reveal-delay-2">
+      <div class="phone-screen" id="phone-screen">
+        <div class="screenshot-uploader" onclick="runSandboxAnalysis()">
+          <div class="uploader-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Upload Chat Screenshot</h3>
+          <p>Click to load a sample conversation</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-metrics reveal reveal-delay-3">
+      <div class="vibe-meter-box">
+        <div class="vibe-header">
+          <span>Vibe Meter</span>
+          <span class="vibe-score" id="vibe-score" style="font-size:3rem;">0%</span>
+        </div>
+        <div class="vibe-bar">
+          <div class="vibe-bar-fill" id="vibe-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-flag">Analysis Dashboard</div>
+        <p id="insight-text" style="color:var(--text-gray);">Load a screenshot to activate BaddieGPT conversation modeling.</p>
+      </div>
+
+      <div class="reply-suggestions">
+        <h4>Suggested Replies</h4>
+        <div class="reply-list">
+          <div class="reply-item">
+            <span class="label">Casual</span>
+            <p id="reply-casual" style="color:var(--text-gray);">Waiting...</p>
+          </div>
+          <div class="reply-item">
+            <span class="label">Deep</span>
+            <p id="reply-deep" style="color:var(--text-gray);">Waiting...</p>
+          </div>
+          <div class="reply-item">
+            <span class="label">Funny</span>
+            <p id="reply-funny" style="color:var(--text-gray);">Waiting...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="feature-list">
+  <div class="section-label reveal">Capabilities</div>
+  <h2 class="reveal" style="font-family:var(--font-pompiere);font-size:clamp(2.5rem,5vw,4rem);margin-bottom:2.5rem;">What BaddieGPT Does</h2>
+
+  <div class="feature-list-item reveal">
+    <div class="feature-list-icon">
+      <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </div>
+    <div>
+      <h3>Chat Analysis</h3>
+      <p>Reads energy levels, response patterns, and interest signals from both sides of any conversation.</p>
+    </div>
+  </div>
+
+  <div class="feature-list-item reveal reveal-delay-1">
+    <div class="feature-list-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div>
+      <h3>Reply Generator</h3>
+      <p>Three reply options in your own voice: casual, deep, or funny. Never generic AI text.</p>
+    </div>
+  </div>
+
+  <div class="feature-list-item reveal reveal-delay-2">
+    <div class="feature-list-icon">
+      <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    </div>
+    <div>
+      <h3>Vibe Meter</h3>
+      <p>Real-time interest scoring. Tells you when engagement is high and when to ease off.</p>
+    </div>
+  </div>
+
+  <div class="feature-list-item reveal reveal-delay-3">
+    <div class="feature-list-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div>
+      <h3>Situation Mode</h3>
+      <p>Specialized modes for first messages, post-silence recovery, rizz mode, and confession preparation.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-watermark">FindMyBaddies</div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>FindMyBaddies</h3>
+      <p>Intentional, slow, research-backed matchmaking powered by multi-modal AI.</p>
+    </div>
+    <div class="footer-links-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="baddie-gpt.html">Baddie GPT</a></li>
+        <li><a href="waitlist.html">Join Waitlist</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 PaXus Labs</span>
+    <span>AI matches based on user-provided data and public social graphs.</span>
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('active');
+}
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+function runSandboxAnalysis() {
+  const screen = document.getElementById('phone-screen');
+  screen.innerHTML = `
+    <div class="msg bot" style="opacity:1;transform:none;">Hey! What did you get up to this weekend?</div>
+    <div class="msg user" style="opacity:1;transform:none;">Just studied mostly. You?</div>
+    <div class="msg bot" style="opacity:1;transform:none;">Went to a gig with some friends! Wish you were there tbh</div>
+    <div style="padding:1rem;text-align:center;color:var(--text-dim);font-size:0.82rem;letter-spacing:1px;text-transform:uppercase;">Analyzing...</div>
+  `;
+
+  document.getElementById('vibe-bar-fill').style.width = '92%';
+  let s = 0;
+  const i = setInterval(() => {
+    if (s < 92) { s++; document.getElementById('vibe-score').textContent = `${s}%`; }
+    else clearInterval(i);
+  }, 14);
+
+  document.getElementById('insight-text').textContent = "Strong signals. She explicitly expressed wanting your presence. High energy, cooperative tone. Recommendation: validate her experience, then transition to making plans.";
+  document.getElementById('reply-casual').textContent = "Sounds amazing. We should definitely go together next time.";
+  document.getElementById('reply-deep').textContent = "I would have loved that. What kind of music were they playing?";
+  document.getElementById('reply-funny').textContent = "Careful, saying stuff like that makes me think you actually like me.";
+}
+</script>
+
+</body>
+</html>

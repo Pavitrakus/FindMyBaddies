@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FindMyBaddies — Date Without Swiping</title>
+<meta name="description" content="AI-powered matchmaking that rejects swipe culture. One verified match in 7 days, built from who you actually are.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pompiere&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain-overlay"></div>
+
+<!-- Ambient Glow -->
+<div class="glow-blob glow-1"></div>
+<div class="glow-blob glow-2"></div>
+<div class="glow-blob glow-3"></div>
+
+<!-- Navigation — floating, no border -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">FindMyBaddies</a>
+  <div class="nav-links">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="baddie-gpt.html">Baddie GPT</a>
+    <a href="waitlist.html" class="nav-cta">Get Started</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+  <a href="how-it-works.html" onclick="toggleMobileMenu()">How It Works</a>
+  <a href="baddie-gpt.html" onclick="toggleMobileMenu()">Baddie GPT</a>
+  <a href="waitlist.html" onclick="toggleMobileMenu()">Get Started</a>
+</div>
+
+<!-- ============================================
+     SCROLL GROUP 1: HERO & CTA
+     ============================================ -->
+<div class="scroll-group">
+  <div class="sticky-bg-wrapper">
+    <img src="IMG/young-couple-having-breakfast_23-2148079665.avif" alt="" class="sticky-bg-img">
+    <div class="sticky-bg-overlay"></div>
+  </div>
+  <div class="scroll-group-content">
+    
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="text-stack reveal" style="margin-bottom: 1.5rem;">
+            <h1 class="white-text" style="font-size: clamp(3.5rem, 8vw, 6.5rem); margin: 0; line-height: 0.9; text-shadow: 0 0 40px rgba(255,255,255,0.4); text-transform: uppercase;">Find My Baddies</h1>
+          </div>
+          <p class="hero-desc reveal reveal-delay-2">
+            One verified match. Seven days of deep AI research. Built from who you actually are, not what you swipe on.
+          </p>
+        </div>
+
+        <div class="hero-right reveal reveal-delay-3">
+          <div class="chat-simulator">
+            <div class="chat-header">
+              <div class="chat-avatar">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/></svg>
+              </div>
+              <div class="chat-status-info">
+                <span class="chat-name">FMB Matchmaker</span>
+                <span class="chat-status">online</span>
+              </div>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-area">
+              <div class="chat-input-mock" id="chat-input-mock">
+                <span id="input-text"></span><span class="typing"></span>
+              </div>
+              <div class="chat-send-mock">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         CTA BUTTONS
+         ============================ -->
+    <div class="cta-button-row">
+      <a href="waitlist.html" class="landing-cta-btn reveal">
+        <div class="cta-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        </div>
+        <div>
+          <h3>Message on Telegram</h3>
+          <p>Launch the matchmaker bot</p>
+        </div>
+      </a>
+
+      <a href="how-it-works.html" class="landing-cta-btn reveal reveal-delay-1">
+        <div class="cta-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <h3>How It Works</h3>
+          <p>Our slow matchmaking manifesto</p>
+        </div>
+      </a>
+
+      <a href="#baddie-gpt-demo" class="landing-cta-btn reveal reveal-delay-2">
+        <div class="cta-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <h3>Try BaddieGPT</h3>
+          <p>Analyze chats in real time</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     SCROLL GROUP 2: BADDIEGPT LIVE DEMO
+     ============================================ -->
+<div class="scroll-group">
+  <div class="sticky-bg-wrapper cloudy-mask">
+    <img src="IMG/young-couple-looking-each-other-affection-woman-holding-partner-s-neck-against-dark-background-intimate-studio-portrait-435182081.webp" alt="" class="sticky-bg-img">
+    <div class="sticky-bg-overlay"></div>
+  </div>
+  <div class="scroll-group-content">
+
+    <section class="baddie-gpt-demo-section" id="baddie-gpt-demo">
+      <div class="section-label reveal">Live Demo</div>
+      <h2 class="reveal">Baddie GPT</h2>
+      <p class="section-subtitle reveal reveal-delay-1">Upload a chat screenshot. Get interest-level scoring, behavioral flags, and reply suggestions in your own voice.</p>
+
+      <div class="gpt-demo-grid">
+        <div class="gpt-demo-uploader reveal reveal-delay-2" onclick="simulateGptAnalysis()">
+          <div class="uploader-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Drop a Screenshot</h3>
+          <p>Or click to simulate a conversation upload</p>
+          <button class="simulate-btn">Simulate Upload</button>
+
+          <div class="scanning-overlay" id="scanning-overlay">
+            <div class="scan-line"></div>
+            <div class="scan-text">Reading Personalities...</div>
+          </div>
+        </div>
+
+        <div class="gpt-demo-results reveal reveal-delay-3" id="gpt-results">
+          <div class="vibe-meter-box">
+            <div class="vibe-header">
+              <span>Vibe Meter</span>
+              <span class="vibe-score" id="vibe-score">0%</span>
+            </div>
+            <div class="vibe-bar">
+              <div class="vibe-bar-fill" id="vibe-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-flag">Real-Time Insights</div>
+            <p id="insight-text">Upload a chat log to run compatibility modeling, behavioral patterns, and conversational analysis.</p>
+          </div>
+
+          <div class="reply-suggestions">
+            <h4>Suggested Replies</h4>
+            <div class="reply-list">
+              <div class="reply-item">
+                <span class="label">Casual</span>
+                <p id="reply-casual">Waiting for analysis...</p>
+              </div>
+              <div class="reply-item">
+                <span class="label">Deep</span>
+                <p id="reply-deep">Waiting for analysis...</p>
+              </div>
+              <div class="reply-item">
+                <span class="label">Funny</span>
+                <p id="reply-funny">Waiting for analysis...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============================================
+     SCROLL GROUP 3: FAQs & FOOTER
+     ============================================ -->
+<div class="scroll-group">
+  <div class="sticky-bg-wrapper cloudy-mask">
+    <img src="IMG/92299-date-night-ideas-white-frog-production-date-night-ideas-for-home.jpeg" alt="" class="sticky-bg-img">
+    <div class="sticky-bg-overlay"></div>
+  </div>
+  <div class="scroll-group-content">
+
+    <section class="faqs-section">
+      <div class="section-label reveal">Questions</div>
+      <h2 class="reveal">Frequently Asked</h2>
+
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What is FindMyBaddies?</span>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          A matchmaking service that rejects swiping. Our multimodal AI builds a personality profile from deep surveys and user-supplied context — chats, screenshots, voice notes — to find exactly one optimal, verified match in 7 days.
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How does BaddieGPT work?</span>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          Upload screenshots of your conversation. BaddieGPT analyzes response intervals, semantic signals, and attachment styles to score interest levels and suggest customized replies in your own voice.
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is my data safe?</span>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          All uploaded data is encrypted, processed in sandboxed LLM environments, and automatically deleted after match processing. We never store your conversations permanently.
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How is the match verified?</span>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          Every recommendation undergoes identity verification through publicly available social directories — confirming identity, occupation, and baseline interests before delivery.
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-4">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Where does the matching happen?</span>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">
+          Everything happens through Telegram and WhatsApp bots. No app to download. Message the bot, answer deep questions, upload context, and wait 7 days. Instagram integration is incoming.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         FOOTER
+         ============================ -->
+    <footer>
+      <div class="footer-watermark">FindMyBaddies</div>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>FindMyBaddies</h3>
+          <p>Intentional, slow, research-backed matchmaking powered by multi-modal AI. One match. Seven days. No swiping.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="baddie-gpt.html">Baddie GPT</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 PaXus Labs</span>
+        <span>AI matches based on user-provided data and public social graphs.</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+// ==========================================
+// NAV — Scroll behavior (add bg on scroll)
+// ==========================================
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('active');
+}
+
+// ==========================================
+// SCROLL REVEAL — IntersectionObserver
+// ==========================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ==========================================
+// CHAT SIMULATION
+// ==========================================
+const chatMessages = document.getElementById('chat-messages');
+const mockInput = document.getElementById('input-text');
+
+const chatFlow = [
+  { sender: 'bot', text: "Hey there. Ready to find your match? Let's start with your name." },
+  { sender: 'user', text: "Aaron", typeDelay: 600 },
+  { sender: 'bot', text: "Welcome Aaron. What campus or city are you in?" },
+  { sender: 'user', text: "State University", typeDelay: 800 },
+  { sender: 'bot', text: "Got it. Describe your ideal match in three words." },
+  { sender: 'user', text: "Spontaneous, nerdy, cute", typeDelay: 1000 },
+  { sender: 'bot', text: "Noted. Do you have any chat exports, LLM archives, or screenshots we can use for deeper matching?" },
+  { sender: 'user', text: "Yeah, I can share my ChatGPT history", typeDelay: 900 },
+  { sender: 'bot', text: "Perfect. We'll run a 7-day deep sweep across public profiles and compatibility models." },
+  { sender: 'bot', text: "One verified match. Delivered to you. Drop your email to lock in." },
+  { sender: 'user', text: "aaron@su.edu", typeDelay: 1200 },
+  { sender: 'bot', text: "You're in. Expect your match within 7 days." }
+];
+
+let flowIndex = 0;
+
+function appendBubble(sender, text) {
+  const bubble = document.createElement('div');
+  bubble.className = `msg ${sender}`;
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function runChatSimulation() {
+  if (flowIndex >= chatFlow.length) {
+    setTimeout(() => {
+      chatMessages.innerHTML = '';
+      flowIndex = 0;
+      runChatSimulation();
+    }, 5000);
+    return;
+  }
+
+  const item = chatFlow[flowIndex];
+
+  if (item.sender === 'bot') {
+    setTimeout(() => {
+      appendBubble('bot', item.text);
+      flowIndex++;
+      runChatSimulation();
+    }, 1200);
+  } else {
+    let i = 0;
+    const text = item.text;
+    mockInput.textContent = '';
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          mockInput.textContent += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(interval);
+          setTimeout(() => {
+            appendBubble('user', text);
+            mockInput.textContent = '';
+            flowIndex++;
+            runChatSimulation();
+          }, 500);
+        }
+      }, 45);
+    }, item.typeDelay || 800);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(runChatSimulation, 800);
+});
+
+// ==========================================
+// BADDIEGPT DEMO
+// ==========================================
+function simulateGptAnalysis() {
+  const overlay = document.getElementById('scanning-overlay');
+  const results = document.getElementById('gpt-results');
+
+  overlay.classList.add('active');
+
+  setTimeout(() => {
+    overlay.classList.remove('active');
+    results.classList.add('active');
+
+    document.getElementById('vibe-bar-fill').style.width = '84%';
+
+    let score = 0;
+    const counter = setInterval(() => {
+      if (score < 84) {
+        score++;
+        document.getElementById('vibe-score').textContent = `${score}%`;
+      } else {
+        clearInterval(counter);
+      }
+    }, 14);
+
+    document.getElementById('insight-text').textContent =
+      "She's matching your energy consistently. Response time averages 6 minutes with deep follow-ups. No signs of disinterest. Recommendation: maintain current pacing, avoid double-texting.";
+    document.getElementById('reply-casual').textContent =
+      "Same, honestly. Down for drinks later?";
+    document.getElementById('reply-deep').textContent =
+      "I love that perspective. Let's continue this over coffee.";
+    document.getElementById('reply-funny').textContent =
+      "Careful, saying stuff like that makes me think you actually like me.";
+  }, 2200);
+}
+
+// ==========================================
+// FAQ TOGGLE
+// ==========================================
+function toggleFaq(el) {
+  const item = el.parentElement;
+  // Close others
+  document.querySelectorAll('.faq-item.active').forEach(other => {
+    if (other !== item) other.classList.remove('active');
+  });
+  item.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>

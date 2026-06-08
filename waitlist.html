@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — FindMyBaddies</title>
+<meta name="description" content="Join the FindMyBaddies waitlist or message our Telegram bot directly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pompiere&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .waitlist-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 5% 4rem;
+    position: relative;
+    z-index: 10;
+  }
+  .waitlist-card {
+    background: var(--card-dark);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  .waitlist-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--pink), var(--pink-soft), var(--pink));
+  }
+  .waitlist-card h1 {
+    font-family: var(--font-pompiere);
+    font-size: 3.5rem;
+    color: var(--text-white);
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+  .waitlist-card h1 span { color: var(--pink); }
+  .waitlist-card .desc {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+  }
+  .form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 0.9rem 1.15rem;
+    color: var(--text-white);
+    font-family: var(--font-body);
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+  .form-input::placeholder { color: var(--text-dim); }
+  .form-input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(255, 62, 108, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .submit-btn {
+    width: 100%;
+    background: var(--pink);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--pink-glow);
+    margin-top: 0.5rem;
+    letter-spacing: 0.3px;
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--pink-glow-strong);
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+  }
+  .telegram-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 14px;
+    border: 1px solid var(--card-border);
+    background: transparent;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  .telegram-btn:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-1px);
+  }
+  .telegram-btn svg {
+    width: 20px; height: 20px;
+    fill: var(--text-white);
+  }
+  @media (max-width: 576px) {
+    .waitlist-card { padding: 2rem 1.5rem; border-radius: 22px; }
+    .waitlist-card h1 { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain-overlay"></div>
+<div class="glow-blob glow-1"></div>
+<div class="glow-blob glow-2"></div>
+
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;overflow:hidden;">
+  <img src="IMG/6537d6b0b90b6.webp" style="width:110%;height:110%;object-fit:cover;filter:blur(12px) brightness(0.35) saturate(1.2);transform:scale(1.05);" alt="">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at center, rgba(6, 6, 8, 0.1) 0%, rgba(6, 6, 8, 0.75) 85%);"></div>
+</div>
+
+<nav id="main-nav" class="scrolled">
+  <a href="index.html" class="nav-logo">FindMyBaddies</a>
+  <div class="nav-links">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="baddie-gpt.html">Baddie GPT</a>
+    <a href="waitlist.html" class="nav-cta">Get Started</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+  <a href="how-it-works.html" onclick="toggleMobileMenu()">How It Works</a>
+  <a href="baddie-gpt.html" onclick="toggleMobileMenu()">Baddie GPT</a>
+  <a href="waitlist.html" onclick="toggleMobileMenu()">Get Started</a>
+</div>
+
+<section class="waitlist-page">
+  <div class="waitlist-card reveal">
+    <h1>Join <span>FindMyBaddies</span></h1>
+    <p class="desc">Invite-only matching batches. Drop your details below to secure a spot in the next 7-day search pipeline.</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label for="name">First Name</label>
+        <input type="text" id="name" class="form-input" placeholder="Aaron" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-input" placeholder="aaron@university.edu" required>
+      </div>
+      <div class="form-group">
+        <label for="telegram">Telegram Handle (optional)</label>
+        <input type="text" id="telegram" class="form-input" placeholder="@aaron">
+      </div>
+      <button type="submit" class="submit-btn">Secure My Spot</button>
+    </form>
+
+    <div class="divider">or</div>
+
+    <a href="https://t.me/FindMyBaddiesBot" target="_blank" class="telegram-btn">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/></svg>
+      Message Bot Directly on Telegram
+    </a>
+  </div>
+</section>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('active');
+}
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.submit-btn');
+  btn.textContent = 'You\'re In';
+  btn.style.background = '#2ecc71';
+  btn.style.boxShadow = '0 4px 20px rgba(46, 204, 113, 0.3)';
+  btn.disabled = true;
+}
+</script>
+
+</body>
+</html>
